@@ -1,7 +1,14 @@
 import React from 'react'
 
-export default function TodoCard() {
-  return (
-    <div>TodoCard</div>
-  )
+export default function TodoCard(props) {
+    const { children } = props
+    return (
+        <li className='todoItem'>
+            <p>{children}</p>
+            <div className='actionsContainer'>
+                <i className="fa-solid fa-pen-to-square"></i>
+                <i className="fa-solid fa-trash"></i>
+            </div>
+        </li>
+    )
 }
