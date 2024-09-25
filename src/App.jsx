@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 function App() {
   const [todos, setTodos] = useState([])
+  const [todoValue, setTodoValue] = useState('')
+
 
   function handleAddTodos(newTodo) {
     const newTodoList = [...todos, newTodo]
@@ -17,10 +19,16 @@ function App() {
     setTodos(newTodoList)
   }
 
+  const handleEditTodo = (index) => {
+    const valueToEdit = todos[index]
+    setTodoValue(valueToEdit)
+    handleDeleteTodo(index)
+  }
+
   return (
     <>
-      <TodoInput handleAddTodos={handleAddTodos}/>
-      <TodoList handleDeleteTodo={handleDeleteTodo} todos={todos}/>
+      <TodoInput todoValue={todoValue} setTodoValue={setTodoValue} handleAddTodos={handleAddTodos}/>
+      <TodoList handleDeleteTodo={handleDeleteTodo} handleEditTodo={handleEditTodo} todos={todos}/>
     </>
   )
 }
